@@ -11,4 +11,11 @@ public class DataDeliverHandler extends AbstractFireAlertHandler {
         List<FireAlert> fireAlertList = (List<FireAlert>) fireAlertObj.getData(FireAlertObj.KEY_DATA_LIST);
         System.out.printf("DataJson:\n %s", fireAlertList.get(0).toJson());
     }
+
+    private void deliverByHTTP(List<FireAlert> fireAlertList) {
+
+
+
+
+    }
 }
