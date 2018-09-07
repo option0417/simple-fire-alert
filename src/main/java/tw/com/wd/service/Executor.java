@@ -14,13 +14,13 @@ import java.net.URL;
 @SpringBootApplication
 public class Executor {
     public static void main(String[] args) throws Exception {
-        URL url = new URL("http://epaper.fire.ntpc.gov.tw/liveview/default.aspx");
+        SpringApplication.run(Executor.class, args);
+    }
 
+    private static final void doFireAlertHandlerChain() throws Exception {
+        URL url = new URL("http://epaper.fire.ntpc.gov.tw/liveview/default.aspx");
         FireAlertObj fireAlertObj = new FireAlertObj();
         fireAlertObj.putData(FireAlertObj.KEY_DATA_URL, url);
-
         new FireAlertHandlerChain().doHandler(fireAlertObj);
-
-        SpringApplication.run(Executor.class, args);
     }
 }
