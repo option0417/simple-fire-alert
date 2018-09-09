@@ -13,4 +13,10 @@ public class FireAlertAPI {
         System.out.println("Say hello to " + message.getContent());
         return new Message(1, "Hello, stranger");
     }
+
+    @RequestMapping(path = "/message", method = RequestMethod.POST)
+    public Message sendMessage(@RequestBody String reqMessage) {
+        System.out.printf("Req: %s\n", reqMessage);
+        return new Message(1, "received");
+    }
 }

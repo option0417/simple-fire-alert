@@ -2,19 +2,18 @@ package tw.com.wd.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import tw.com.wd.service.handler.FireAlertHandlerChain;
 import tw.com.wd.service.obj.FireAlertObj;
 
 import java.net.URL;
 
-/**
- * Hello world!
- *
- */
+
 @SpringBootApplication
 public class Executor {
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Executor.class, args);
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(Executor.class, args);
+
     }
 
     private static final void doFireAlertHandlerChain() throws Exception {
