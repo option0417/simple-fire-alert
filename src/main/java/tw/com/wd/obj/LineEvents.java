@@ -2,6 +2,7 @@ package tw.com.wd.obj;
 
 import com.google.gson.annotations.SerializedName;
 import com.linecorp.bot.model.event.Event;
+import com.linecorp.bot.model.objectmapper.ModelObjectMapper;
 import tw.com.wd.util.FireAlertLogger;
 
 import java.util.List;
