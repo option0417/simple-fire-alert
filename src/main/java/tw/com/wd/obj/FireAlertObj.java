@@ -6,8 +6,7 @@ public class FireAlertObj {
     public static final String KEY_DATA_URL = "data_url";
     public static final String KEY_DATA_DOC = "data_doc";
     public static final String KEY_DATA_LIST = "data_list";
-
-
+    public static final String KEY_LINE_JSON = "line_json";
 
     private static final ConcurrentHashMap<String, Object> DATA_MAP = new ConcurrentHashMap<>();
 
@@ -15,7 +14,7 @@ public class FireAlertObj {
         DATA_MAP.put(key, dataObj);
     }
 
-    public Object getData(String key) {
-        return DATA_MAP.get(key);
+    public <T> T getData(String key) {
+        return (T) DATA_MAP.get(key);
     }
 }
