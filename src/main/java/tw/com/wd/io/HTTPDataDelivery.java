@@ -1,4 +1,4 @@
-package tw.com.wd.service.io;
+package tw.com.wd.io;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -6,9 +6,9 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import tw.com.wd.service.obj.FireAlert;
-import tw.com.wd.service.obj.FireAlertList;
-import tw.com.wd.service.obj.FireAlertObj;
+import tw.com.wd.obj.FireAlert;
+import tw.com.wd.obj.FireAlertList;
+import tw.com.wd.obj.FireAlertObj;
 
 import java.util.List;
 

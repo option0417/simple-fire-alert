@@ -1,6 +1,6 @@
-package tw.com.wd.service.io;
+package tw.com.wd.io;
 
-import tw.com.wd.service.obj.FireAlertObj;
+import tw.com.wd.obj.FireAlertObj;
 
 public interface IDataDelivery {
     public void deliver(FireAlertObj fireAlertObj);

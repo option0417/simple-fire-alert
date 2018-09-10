@@ -1,4 +1,4 @@
-package tw.com.wd.service.util;
+package tw.com.wd.util;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

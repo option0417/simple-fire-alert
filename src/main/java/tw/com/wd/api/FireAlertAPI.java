@@ -1,12 +1,8 @@
-package tw.com.wd.service.api;
+package tw.com.wd.api;
 
 import org.springframework.web.bind.annotation.*;
-import tw.com.wd.service.obj.Message;
-import tw.com.wd.service.util.SignatureUtil;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
+import tw.com.wd.obj.Message;
+import tw.com.wd.util.SignatureUtil;
 
 @RestController
 public class FireAlertAPI {

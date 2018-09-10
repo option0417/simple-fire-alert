@@ -1,7 +1,7 @@
-package tw.com.wd.service.handler;
+package tw.com.wd.handler;
 
-import tw.com.wd.service.obj.FireAlert;
-import tw.com.wd.service.obj.FireAlertObj;
+import tw.com.wd.obj.FireAlert;
+import tw.com.wd.obj.FireAlertObj;
 
 import java.util.List;
 

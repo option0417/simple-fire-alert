@@ -1,4 +1,4 @@
-package tw.com.wd.service;
+package tw.com.wd;
 
 import org.junit.Assert;
 import org.junit.Test;

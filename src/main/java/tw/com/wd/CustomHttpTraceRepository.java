@@ -1,4 +1,4 @@
-package tw.com.wd.service;
+package tw.com.wd;
 
 import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;

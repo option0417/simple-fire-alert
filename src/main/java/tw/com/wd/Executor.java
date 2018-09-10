@@ -1,10 +1,10 @@
-package tw.com.wd.service;
+package tw.com.wd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import tw.com.wd.service.handler.FireAlertHandlerChain;
-import tw.com.wd.service.obj.FireAlertObj;
+import tw.com.wd.handler.FireAlertHandlerChain;
+import tw.com.wd.obj.FireAlertObj;
 
 import java.net.URL;
 

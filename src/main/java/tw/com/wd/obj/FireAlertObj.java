@@ -1,4 +1,4 @@
-package tw.com.wd.service.obj;
+package tw.com.wd.obj;
 
 import java.util.concurrent.ConcurrentHashMap;
 

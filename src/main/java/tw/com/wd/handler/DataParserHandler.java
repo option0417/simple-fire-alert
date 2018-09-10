@@ -1,10 +1,10 @@
-package tw.com.wd.service.handler;
+package tw.com.wd.handler;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import tw.com.wd.service.obj.FireAlertObj;
-import tw.com.wd.service.obj.FireAlert;
+import tw.com.wd.obj.FireAlertObj;
+import tw.com.wd.obj.FireAlert;
 
 import java.util.ArrayList;
 import java.util.List;

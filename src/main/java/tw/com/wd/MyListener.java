@@ -1,4 +1,4 @@
-package tw.com.wd.service;
+package tw.com.wd;
 
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;

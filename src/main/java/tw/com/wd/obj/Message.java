@@ -1,4 +1,4 @@
-package tw.com.wd.service.obj;
+package tw.com.wd.obj;
 
 public class Message {
     private int code;

@@ -1,4 +1,4 @@
-package tw.com.wd.service;
+package tw.com.wd;
 
 import static org.junit.Assert.assertTrue;
 
