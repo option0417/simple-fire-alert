@@ -15,10 +15,12 @@ public class CustomHttpTraceRepository extends InMemoryHttpTraceRepository imple
     @Override
     public void add(HttpTrace trace) {
         super.add(trace);
-        System.out.printf("HTTP:\nRemote: %s  %s %s\n", trace.getRequest().getRemoteAddress(), trace.getRequest().getMethod(), trace.getRequest().getUri());
+        System.out.printf("HTTP\n");
+        System.out.printf("\tFrom %s ", trace.getRequest().getRemoteAddress());
+        System.out.printf("Method: %s URI: %s \n", trace.getRequest().getMethod(), trace.getRequest().getUri());
 
+        System.out.printf("HTTP Headers\n");
         Map<String, List<String>> headerMap = trace.getRequest().getHeaders();
-
         Iterator<Map.Entry<String, List<String>>> iter = headerMap.entrySet().iterator();
         while (iter.hasNext()) {
             Map.Entry entry = iter.next();

@@ -10,6 +10,10 @@ function sendToLocal() {
   curl -v -H ${H_CONTENT_TYPE}  --data ${BODY} -X POST http://${TARGET_HOST}:8080/hello
 }
 
+function sendMsgToLocal() {
+  curl -v -H ${H_CONTENT_TYPE}  --data ${BODY} -X POST http://${TARGET_HOST}:8080/message
+}
+
 
 function sendToHeroku() {
   curl -v -H ${H_CONTENT_TYPE}  --data ${BODY} -X POST https://${TARGET_HOST}/hello
@@ -29,8 +33,14 @@ case $1 in
     sendToHeroku;
   ;;
 
+  3)
+    TARGET_HOST=${HOST_LOCAL}
+    echo "Send to Localhost ${HOST_HEROKU}"
+    sendMsgToLocal;
+  ;;
+
   *)
-    echo "Usage $0 1(Localhost), 2(Hekoru)"
+    echo "Usage $0 1(Localhost), 2(Hekoru), 3(Send message to Localhost)"
   ;;
 esac
 
