@@ -19,8 +19,8 @@ public class FireAlertAPI {
     @RequestMapping(path = "/message", method = RequestMethod.POST)
     public Message sendMessage(@RequestHeader(name = "x-line-signature") String signature, @RequestBody String reqMessage) {
 
+        System.out.printf("Req: %s\n", reqMessage);
         if (isValid(signature, reqMessage)) {
-            System.out.printf("Req: %s\n", reqMessage);
             return new Message(1, "received");
         } else {
             return new Message(0, "Wrong signature");
