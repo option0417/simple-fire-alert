@@ -19,6 +19,10 @@ function sendToHeroku() {
   curl -v -H ${H_CONTENT_TYPE}  --data ${BODY} -X POST https://${TARGET_HOST}/hello
 }
 
+function sendMsgToHeroku() {
+  curl -v -H ${H_CONTENT_TYPE}  --data ${BODY} -X POST https://${TARGET_HOST}/message
+}
+
 OPTION=$1
 case $1 in
   1)
@@ -39,8 +43,14 @@ case $1 in
     sendMsgToLocal;
   ;;
 
+  4)
+    TARGET_HOST=${HOST_HEROKU}
+    echo "Send to Heroku ${HOST_HEROKU}"
+    sendMsgToHeroku;
+  ;;
+
   *)
-    echo "Usage $0 1(Localhost), 2(Hekoru), 3(Send message to Localhost)"
+    echo "Usage $0 1(Localhost), 2(Hekoru), 3(Send message to Localhost), 4(Send message to Heroku)"
   ;;
 esac
 
