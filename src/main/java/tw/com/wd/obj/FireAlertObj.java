@@ -1,20 +1,42 @@
 package tw.com.wd.obj;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FireAlertObj {
-    public static final String KEY_DATA_URL = "data_url";
-    public static final String KEY_DATA_DOC = "data_doc";
-    public static final String KEY_DATA_LIST = "data_list";
-    public static final String KEY_LINE_JSON = "line_json";
+    public static final String KEY_DATA_URL     = "data_url";
+    public static final String KEY_DATA_DOC     = "data_doc";
+    public static final String KEY_DATA_LIST    = "data_list";
 
-    private static final ConcurrentHashMap<String, Object> DATA_MAP = new ConcurrentHashMap<>();
+    // Line related property
+    public static final String KEY_LINE_SIGNATURE   = "line_signature";
+    public static final String KEY_LINE_JSON        = "line_json";
 
-    public void putData(String key, Object dataObj) {
-        DATA_MAP.put(key, dataObj);
+    private Map<String, Object> dataMap;
+    private ServiceStatus serviceStatus;
+
+
+    public FireAlertObj() {
+        super();
+        this.dataMap        = new HashMap<>();
+        this.serviceStatus  = new ServiceStatus(false, 0, "");
+    }
+
+    public FireAlertObj putData(String key, Object dataObj) {
+        this.dataMap.put(key, dataObj);
+        return this;
     }
 
     public <T> T getData(String key) {
-        return (T) DATA_MAP.get(key);
+        return (T) this.dataMap.get(key);
+    }
+
+    public FireAlertObj setSuccess(boolean isSuccess) {
+        this.serviceStatus.setSuccess(isSuccess);
+        return this;
+    }
+
+    public boolean isSuccess() {
+        return serviceStatus.isSuccess();
     }
 }

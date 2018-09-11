@@ -5,9 +5,9 @@ import tw.com.wd.obj.FireAlertObj;
 import tw.com.wd.obj.LineEvents;
 import tw.com.wd.util.FireAlertLogger;
 
-public class LineEventParserHandler implements IFireAlertHandler {
+public class LineEventParserHandler extends AbstractFireAlertHandler implements IFireAlertHandler {
     @Override
-    public void doHandler(FireAlertObj fireAlertObj) {
+    protected void processing(FireAlertObj fireAlertObj) {
         String lineJson = fireAlertObj.getData(FireAlertObj.KEY_LINE_JSON);
 
         LineEvents lineEvents = new Gson().fromJson(lineJson, LineEvents.class);

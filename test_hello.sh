@@ -1,6 +1,7 @@
 #!/bin/bash
 
 H_CONTENT_TYPE=content-type:application/json;charset=UTF-8
+H_SIGNATURE=x-line-signature:12345678
 BODY='{"code":0,"content":"TEST"}'
 HOST_HEROKU=lit-springs-63926.herokuapp.com
 HOST_LOCAL=127.0.0.1
@@ -11,7 +12,7 @@ function sendToLocal() {
 }
 
 function sendMsgToLocal() {
-  curl -v -H ${H_CONTENT_TYPE}  --data ${BODY} -X POST http://${TARGET_HOST}:8080/message
+  curl -v -H ${H_CONTENT_TYPE} -H ${H_SIGNATURE} --data ${BODY} -X POST http://${TARGET_HOST}:8080/message
 }
 
 

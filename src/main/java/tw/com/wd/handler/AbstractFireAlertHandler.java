@@ -1,5 +1,6 @@
 package tw.com.wd.handler;
 
+import tw.com.wd.exception.RuntimeFireAlertException;
 import tw.com.wd.obj.FireAlertObj;
 
 public abstract class AbstractFireAlertHandler implements IFireAlertHandler {
@@ -13,8 +14,9 @@ public abstract class AbstractFireAlertHandler implements IFireAlertHandler {
             if (null != nextHandler) {
                 nextHandler.doHandler(fireAlertObj);
             }
-        } catch (Throwable t) {
-
+        } catch (RuntimeFireAlertException rt) {
+            rt.printStackTrace();
+            throw rt;
         }
     }
 
@@ -23,5 +25,5 @@ public abstract class AbstractFireAlertHandler implements IFireAlertHandler {
         return this.nextHandler;
     }
 
-    protected abstract void processing(FireAlertObj fireAlertObj) throws Throwable;
+    protected abstract void processing(FireAlertObj fireAlertObj) throws RuntimeFireAlertException;
 }

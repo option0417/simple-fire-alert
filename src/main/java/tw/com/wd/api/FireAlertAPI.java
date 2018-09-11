@@ -1,11 +1,11 @@
 package tw.com.wd.api;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import tw.com.wd.handler.LineEventHandlerChain;
 import tw.com.wd.obj.FireAlertObj;
 import tw.com.wd.obj.Message;
 import tw.com.wd.util.FireAlertLogger;
-import tw.com.wd.util.SignatureUtil;
 
 @RestController
 public class FireAlertAPI {
@@ -16,16 +16,22 @@ public class FireAlertAPI {
     }
 
     @RequestMapping(path = "/message", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
     public Message sendMessage(@RequestHeader(name = "x-line-signature") String signature, @RequestBody String reqMessage) {
 
-        FireAlertLogger.info("Req: %s\n", reqMessage);
-        if (SignatureUtil.isValid(signature, reqMessage)) {
-            FireAlertObj fireAlertObj = new FireAlertObj();
-            fireAlertObj.putData(FireAlertObj.KEY_LINE_JSON, reqMessage);
-            new LineEventHandlerChain().doHandler(fireAlertObj);
+        FireAlertLogger.info("Req: {}\n", reqMessage);
+
+
+        FireAlertObj fireAlertObj = new FireAlertObj();
+        fireAlertObj.putData(FireAlertObj.KEY_LINE_SIGNATURE, signature);
+        fireAlertObj.putData(FireAlertObj.KEY_LINE_JSON, reqMessage);
+
+        new LineEventHandlerChain().doHandler(fireAlertObj);
+
+        if (fireAlertObj.isSuccess()) {
             return new Message(1, "received");
         } else {
-            return new Message(0, "Wrong signature");
+            return new Message(0, "fail");
         }
     }
 }

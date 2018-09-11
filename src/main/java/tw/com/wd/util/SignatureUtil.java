@@ -19,8 +19,8 @@ public class SignatureUtil {
 
             String receivedSignature = new String(base64ReqBytes, "UTF-8");
 
-            FireAlertLogger.info("Req Signature: %s\n", reqSignature);
-            FireAlertLogger.info("Cal Signature: %s\n", receivedSignature);
+            FireAlertLogger.info("Req Signature: {}\n", reqSignature);
+            FireAlertLogger.info("Cal Signature: {}\n", receivedSignature);
             return reqSignature.equals(receivedSignature);
         } catch (Throwable t) {
             t.printStackTrace();
