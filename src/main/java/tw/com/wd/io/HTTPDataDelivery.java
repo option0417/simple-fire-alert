@@ -9,6 +9,7 @@ import org.apache.http.impl.client.HttpClients;
 import tw.com.wd.obj.FireAlert;
 import tw.com.wd.obj.FireAlertList;
 import tw.com.wd.obj.FireAlertObj;
+import tw.com.wd.util.FireAlertLogger;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class HTTPDataDelivery implements IDataDelivery {
 
             response = httpclient.execute(post);
 
-            System.out.println(response.getStatusLine());
+            FireAlertLogger.info(response.getStatusLine().toString());
         } catch (Throwable t) {
             return;
         } finally {

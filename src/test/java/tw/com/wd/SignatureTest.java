@@ -2,6 +2,7 @@ package tw.com.wd;
 
 import org.junit.Assert;
 import org.junit.Test;
+import tw.com.wd.util.FireAlertLogger;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -22,7 +23,7 @@ public class SignatureTest {
 
         String receivedSignature = new String(Base64.getEncoder().encode(mac.doFinal(REQ.getBytes("UTF-8"))), "UTF-8");
 
-        System.out.printf("Cal Signature: %s\n", receivedSignature);
+        FireAlertLogger.info("Cal Signature: %s\n", receivedSignature);
 
 
         Assert.assertEquals(REQ_SIGNATURE, receivedSignature);
