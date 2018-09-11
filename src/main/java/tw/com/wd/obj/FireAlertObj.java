@@ -11,6 +11,7 @@ public class FireAlertObj {
     // Line related property
     public static final String KEY_LINE_SIGNATURE   = "line_signature";
     public static final String KEY_LINE_JSON        = "line_json";
+    public static final String KEY_LINE_EVENT_LIST  = "line_event_list";
 
     private Map<String, Object> dataMap;
     private ServiceStatus serviceStatus;

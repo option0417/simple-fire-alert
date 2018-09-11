@@ -25,4 +25,8 @@ public class FireAlertLogger {
     public static void error(String error) {
         LOG.error(error);
     }
+
+    public static void error(String format, String... debug) {
+        LOG.error(format, debug);
+    }
 }
