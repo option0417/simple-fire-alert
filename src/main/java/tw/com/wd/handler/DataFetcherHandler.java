@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import tw.com.wd.exception.RuntimeFireAlertException;
 import tw.com.wd.obj.FireAlertObj;
+import tw.com.wd.util.FireAlertLogger;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class DataFetcherHandler extends AbstractFireAlertHandler {
     @Override
     protected void processing(FireAlertObj fireAlertObj) throws RuntimeFireAlertException {
         try {
+            FireAlertLogger.info("URL: {}", this.fireAlertURL.toString());
             ClassLoader classLoader = getClass().getClassLoader();
             File file = new File(classLoader.getResource("fire_alert.html").getFile());
             Document doc = Jsoup.parse(this.fireAlertURL, 30000);
