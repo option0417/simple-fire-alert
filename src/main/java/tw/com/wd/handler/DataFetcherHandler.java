@@ -28,7 +28,7 @@ public class DataFetcherHandler extends AbstractFireAlertHandler {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             File file = new File(classLoader.getResource("fire_alert.html").getFile());
-            Document doc = Jsoup.parse(this.fireAlertURL, 3000);
+            Document doc = Jsoup.parse(this.fireAlertURL, 30000);
             //Document doc = Jsoup.parse(file, "UTF-8");
 
             fireAlertObj.putData(FireAlertObj.KEY_DATA_DOC, doc);
