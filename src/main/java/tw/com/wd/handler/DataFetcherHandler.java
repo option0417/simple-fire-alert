@@ -17,7 +17,7 @@ public class DataFetcherHandler extends AbstractFireAlertHandler {
     public DataFetcherHandler() {
         super();
         try {
-            this.fireAlertURL = new URL("http://epaper.fire.ntpc.gov.tw/liveview/default.aspx");
+            this.fireAlertURL = new URL("https://epaper.fire.ntpc.gov.tw/liveview/default.aspx");
         } catch (MalformedURLException e) {
             throw new RuntimeFireAlertException(e);
         }
