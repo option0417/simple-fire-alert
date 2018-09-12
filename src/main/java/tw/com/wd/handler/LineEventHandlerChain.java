@@ -13,6 +13,7 @@ public class LineEventHandlerChain {
     private IFireAlertHandler lineEventParserHandler;
     private IFireAlertHandler lineSignatureHandler;
     private IFireAlertHandler lineEventDisplayHandler;
+    private IFireAlertHandler lineReplyHandler;
 
 
     public LineEventHandlerChain() {
@@ -25,10 +26,14 @@ public class LineEventHandlerChain {
         });
 
         initialHandler = lineSignatureHandler = new LineSignatureHandler();
-        lineEventParserHandler = new LineEventParserHandler();
+        lineEventParserHandler  = new LineEventParserHandler();
         lineEventDisplayHandler = new LineEventDisplayHandler();
+        lineReplyHandler        = new LineReplyHandler();
 
-        ((AbstractFireAlertHandler)lineSignatureHandler).addNextHandler(lineEventParserHandler).addNextHandler(lineEventDisplayHandler);
+        ((AbstractFireAlertHandler)lineSignatureHandler)
+                .addNextHandler(lineEventParserHandler)
+                .addNextHandler(lineEventDisplayHandler)
+                .addNextHandler(lineReplyHandler);
     }
 
     public void doHandler(FireAlertObj fireAlertObj) {
