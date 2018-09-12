@@ -7,15 +7,17 @@ import tw.com.wd.obj.FireAlertObj;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class DataFetcherHandler extends AbstractFireAlertHandler {
     @Override
     protected void processing(FireAlertObj fireAlertObj) throws RuntimeFireAlertException {
-        //URL dataURL     = (URL) fireAlertObj.getData(FireAlertObj.KEY_DATA_URL);
+        URL dataURL = fireAlertObj.getData(FireAlertObj.KEY_DATA_URL);
 
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             File file = new File(classLoader.getResource("fire_alert.html").getFile());
+            //Document doc = Jsoup.parse(dataURL, 3000);
             Document doc = Jsoup.parse(file, "UTF-8");
 
             fireAlertObj.putData(FireAlertObj.KEY_DATA_DOC, doc);

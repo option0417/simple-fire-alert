@@ -2,6 +2,7 @@ package tw.com.wd.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import tw.com.wd.flow.FireAlertDeliveryServiceFlow;
 import tw.com.wd.flow.IFireAlertServiceFlow;
 import tw.com.wd.flow.LineReplyServiceFlow;
 import tw.com.wd.obj.FireAlertObj;
@@ -10,12 +11,14 @@ import tw.com.wd.util.FireAlertLogger;
 
 @RestController
 public class FireAlertAPI {
+    private IFireAlertServiceFlow fireAlertDeliveryServiceFlow;
     private IFireAlertServiceFlow lineReplyServiceFlow;
 
 
     public FireAlertAPI() {
         super();
-        this.lineReplyServiceFlow = new LineReplyServiceFlow();
+        this.fireAlertDeliveryServiceFlow   = new FireAlertDeliveryServiceFlow();
+        this.lineReplyServiceFlow           = new LineReplyServiceFlow();
     }
 
     @RequestMapping(path = "/hello", method = RequestMethod.POST)
@@ -39,5 +42,11 @@ public class FireAlertAPI {
         } else {
             return new Message(0, "fail");
         }
+    }
+
+    @RequestMapping(path = "/message", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public void getMessage() {
+        this.fireAlertDeliveryServiceFlow.trigger(new FireAlertObj());
     }
 }

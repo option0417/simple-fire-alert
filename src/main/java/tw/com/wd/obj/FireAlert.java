@@ -64,4 +64,24 @@ public class FireAlert {
     public String toJson() {
         return GSON_INSTANCE.toJson(this);
     }
+
+    /**
+
+     // 受理案件時間
+     private String caseTime;
+     // 案類
+     private String caseType;
+     // 派遣分隊
+     private String caseTeam;
+     // 狀態
+     private String caseStatus;
+     // 案發地址
+     private String caseAddress;     *
+     * @return
+     */
+    public String toString() {
+        return String.format(
+                "受理案件時間: %s\n案類: %s\n派遣分隊: %s\n狀態: %s\n案發地址: %s\n",
+                this.caseTime, this.caseType, this.caseTeam, this.caseStatus, this.caseAddress);
+    }
 }

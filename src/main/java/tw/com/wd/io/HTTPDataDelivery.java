@@ -1,5 +1,10 @@
 package tw.com.wd.io;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.linecorp.bot.model.PushMessage;
+import com.linecorp.bot.model.message.Message;
+import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.model.objectmapper.ModelObjectMapper;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -7,10 +12,10 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import tw.com.wd.obj.FireAlert;
-import tw.com.wd.obj.FireAlertList;
 import tw.com.wd.obj.FireAlertObj;
 import tw.com.wd.util.FireAlertLogger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HTTPDataDelivery implements IDataDelivery {
@@ -21,10 +26,22 @@ public class HTTPDataDelivery implements IDataDelivery {
 
     @Override
     public void deliver(FireAlertObj fireAlertObj) {
-        List<FireAlert> fireAlertList = (List<FireAlert>) fireAlertObj.getData(FireAlertObj.KEY_DATA_LIST);
+        List<FireAlert> fireAlertList = fireAlertObj.getData(FireAlertObj.KEY_DATA_LIST);
 
         CloseableHttpResponse response = null;
-        String reqJson = new FireAlertList(fireAlertList).toJson();
+        String fireAlertText = fireAlertList.get(0).toString();
+
+        List<Message> textMsgList = new ArrayList<>();
+        textMsgList.add(new TextMessage(fireAlertText));
+
+        PushMessage pushMessage = new PushMessage("U62e6795d142e8e5810ee71206684280b", textMsgList);
+
+        String reqJson = null;
+        try {
+            reqJson = ModelObjectMapper.createNewObjectMapper().writeValueAsString(pushMessage);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
 
         try {
             HttpPost post = new HttpPost(POST_TARGET);
