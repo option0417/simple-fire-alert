@@ -21,12 +21,6 @@ public class FireAlertAPI {
         this.lineReplyServiceFlow           = new LineReplyServiceFlow();
     }
 
-    @RequestMapping(path = "/hello", method = RequestMethod.POST)
-    public Message sayHello(@RequestBody Message message) {
-        FireAlertLogger.info("Say hello to " + message.getContent());
-        return new Message(1, "Hello, stranger");
-    }
-
     @RequestMapping(path = "/message", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Message sendMessage(@RequestHeader(name = "x-line-signature") String signature, @RequestBody String reqMessage) {

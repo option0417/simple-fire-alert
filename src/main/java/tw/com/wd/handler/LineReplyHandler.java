@@ -14,8 +14,22 @@ import tw.com.wd.obj.FireAlertObj;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LineReplyHandler extends AbstractFireAlertHandler implements IFireAlertHandler {
+    private static final TextMessage DEFAULT_MSG_TEXT;
+
+    static {
+        String defaultText = ResourceBundle.getBundle("reply_msg", Locale.TAIWAN).getString("default");
+        DEFAULT_MSG_TEXT = new TextMessage(defaultText);
+    }
+
+    public LineReplyHandler() {
+        super();
+
+    }
+
     @Override
     protected void processing(FireAlertObj fireAlertObj) throws RuntimeFireAlertException {
         List<Event> eventList = fireAlertObj.getData(FireAlertObj.KEY_LINE_EVENT_LIST);
@@ -27,6 +41,8 @@ public class LineReplyHandler extends AbstractFireAlertHandler implements IFireA
                     MessageEvent msgEvent = (MessageEvent) event;
 
                     List<Message> msgList = new ArrayList<>();
+                    msgList.add(DEFAULT_MSG_TEXT);
+
                     if (msgEvent.getMessage() instanceof TextMessageContent) {
                         TextMessageContent textMsgContent = (TextMessageContent) msgEvent.getMessage();
 
