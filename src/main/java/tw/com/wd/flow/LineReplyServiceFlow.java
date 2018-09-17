@@ -8,6 +8,7 @@ public class LineReplyServiceFlow extends AbstractFireAlertFlow implements IFire
     private IFireAlertHandler lineSignatureHandler;
     private IFireAlertHandler lineEventDisplayHandler;
     private IFireAlertHandler lineReplyHandler;
+    private IFireAlertHandler lineReplyDeliverHandler;
 
     @Override
     protected IFireAlertHandler buildInitialFireAlertHandler() {
@@ -15,11 +16,13 @@ public class LineReplyServiceFlow extends AbstractFireAlertFlow implements IFire
         lineEventParserHandler  = new LineEventParserHandler();
         lineEventDisplayHandler = new LineEventDisplayHandler();
         lineReplyHandler        = new LineReplyHandler();
+        lineReplyDeliverHandler = new LineReplyDeliverHandler();
 
         ((AbstractFireAlertHandler)lineSignatureHandler)
                 .addNextHandler(lineEventParserHandler)
                 .addNextHandler(lineEventDisplayHandler)
-                .addNextHandler(lineReplyHandler);
+                .addNextHandler(lineReplyHandler)
+                .addNextHandler(lineReplyDeliverHandler);
         return lineSignatureHandler;
     }
 }
